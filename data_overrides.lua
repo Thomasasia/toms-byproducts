@@ -160,6 +160,29 @@ local spent_etchant = {{
 }}
 data:extend(spent_etchant)
 
+local spent_etchant_to_copper = {{
+  type = "recipe",
+  name = "etchant-metal-reclamation",
+  category = "byproduct-refining",
+  enabled = true,
+  energy_required = 6,
+  ingredients = {{"spent-etchant", 10}},
+  result = "copper-plate"
+}}
+data:extend(spent_etchant_to_copper)
+
+local spent_etchant_to_copper_adv = {{
+  type = "recipe",
+  name = "etchant-advanced-metal-reclamation",
+  category = "byproduct-refining",
+  enabled = true,
+  energy_required = 3,
+  ingredients = {{"spent-etchant", 5}},
+  result = "copper-cable"
+}}
+data:extend(spent_etchant_to_copper_adv)
+
+
 -- electronic circuit waste
 data.raw["recipe"]["electronic-circuit"].result_count = 2
 local ecirc_results = {
@@ -192,3 +215,36 @@ data.raw["recipe"]["processing-unit"].expensive.results = pu_results
 data.raw["recipe"]["processing-unit"].normal.results = pu_results
 data.raw["recipe"]["processing-unit"].normal.main_product = "processing-unit"
 data.raw["recipe"]["processing-unit"].expensive.main_product = "processing-unit"
+
+-- rocket control unit waste
+data.raw["recipe"]["rocket-control-unit"].result_count = 2
+local rcu_results = {
+  {type="item", name="spent-etchant", amount=1},
+  {type="item", name="rocket-control-unit", amount=1}
+}
+data.raw["recipe"]["rocket-control-unit"].results = rcu_results
+data.raw["recipe"]["rocket-control-unit"].main_product = "rocket-control-unit"
+
+-- military science waste
+data.raw["recipe"]["military-science-pack"].result_count = 3
+data.raw["recipe"]["military-science-pack"].main_product = "military-science-pack"
+data.raw["recipe"]["military-science-pack"].results = {
+  {type="item", name = "slag", amount = 1},
+  {type="item", name = "military-science-pack", amount = 2}
+}
+
+-- production science waste
+data.raw["recipe"]["production-science-pack"].result_count = 4
+data.raw["recipe"]["production-science-pack"].main_product = "production-science-pack"
+data.raw["recipe"]["production-science-pack"].results = {
+  {type="item", name = "slag", amount = 1},
+  {type="item", name = "production-science-pack", amount = 3}
+}
+
+-- utility science waste
+data.raw["recipe"]["utility-science-pack"].result_count = 4
+data.raw["recipe"]["utility-science-pack"].main_product = "utility-science-pack"
+data.raw["recipe"]["utility-science-pack"].results = {
+  {type="item", name = "spent-etchant", amount = 1},
+  {type="item", name = "utility-science-pack", amount = 3}
+}
