@@ -242,7 +242,14 @@ local plastic_to_pyro = {{
   enabled = true,
   energy_required = 5.0,
   ingredients = {{type="item", name="plastic-bar", amount=5}},
-  results = {{type="fluid",name="liquid-pyrolysis-oil", amount=50}}
+  results = {{type="fluid",name="liquid-pyrolysis-oil", amount=30}},
+  crafting_machine_tint =
+    {
+      primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+      secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+      tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+      quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+    }
 }}
 data:extend(plastic_to_pyro)
 
@@ -255,7 +262,14 @@ local plastic_waste_to_pyro = {{
   enabled = true,
   energy_required = 5.0,
   ingredients = {{type="item", name="plastic-waste", amount=10}},
-  results = {{type="fluid",name="liquid-pyrolysis-oil", amount=25}}
+  results = {{type="fluid",name="liquid-pyrolysis-oil", amount=15}},
+  crafting_machine_tint =
+    {
+      primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+      secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+      tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+      quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+    }
 }}
 data:extend(plastic_waste_to_pyro)
 
@@ -263,7 +277,7 @@ local plastic_waste_to_plastic = {{
   type = "recipe",
   name = "plastic-waste-to-plastic",
   category = "smelting",
-  energy_required = 2,
+  energy_required = 4,
   enabled = true,
   ingredients = {{type="item", name="plastic-waste", amount = 10}},
   results = {{type="item", name = "plastic-bar", amount = 1}}
@@ -275,10 +289,17 @@ local pyro_oil_liquid_to_solid = {{
   type = "recipe",
   name = "pyrolysis-oil-liquid-to-solid",
   category = "chemistry",
-  energy_required = 1,
+  energy_required = 2,
   enabled = true,
-  ingredients = {{type="fluid", name="liquid-pyrolysis-oil", amount=50}},
-  results = {{type="item", name="solid-pyrolysis-oil", amount = 1}}
+  ingredients = {{type="fluid", name="liquid-pyrolysis-oil", amount=30}},
+  results = {{type="item", name="solid-pyrolysis-oil", amount = 1}},
+  crafting_machine_tint =
+    {
+      primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+      secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+      tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+      quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+    }
 }}
 data:extend(pyro_oil_liquid_to_solid)
 
@@ -287,7 +308,7 @@ data:extend(pyro_oil_liquid_to_solid)
 
 -- plastic bar waste
 data.raw["recipe"]["plastic-bar"].result_count = 3
-table.insert(data.raw["recipe"]["plastic-bar"].results, 0, {type="item", name = "plastic-waste", amount = 1})
+table.insert(data.raw["recipe"]["plastic-bar"].results, 1, {type="item", name = "plastic-waste", amount = 1})
 data.raw["recipe"]["plastic-bar"].main_product = "plastic-bar"
 
 -- electronic circuit waste
