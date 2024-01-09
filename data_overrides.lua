@@ -8,6 +8,7 @@ slag.name = "slag"
 slag.stack_size = slag.stack_size * 2
 local slag_tint = {r=0.75, g=0.75, b=0.75, a=1} -- darken
 slag.order = "z[slag]"
+slag.subgroup = "intermediate-product"
 slag.icons = {
   {
     icon = "__toms-byproducts__/graphics/icons/slag.png",
@@ -155,11 +156,12 @@ local spent_etchant = {{
   icon = "__toms-byproducts__/graphics/icons/spent-etchant.png",
   icon_size = 64, icon_mipmaps = 4,
   order = "z[spent-etchant]",
-  subgroup = "raw-material",
+  subgroup = "intermediate-product",
   stack_size = 100
 }}
 data:extend(spent_etchant)
 
+-- metal extraction from spent etchant
 local spent_etchant_to_copper = {{
   type = "recipe",
   name = "etchant-metal-reclamation",
@@ -182,6 +184,111 @@ local spent_etchant_to_copper_adv = {{
 }}
 data:extend(spent_etchant_to_copper_adv)
 
+-- plastic waste
+local plastic_waste = {{
+  type = "item",
+  name = "plastic-waste",
+  icon = "__toms-byproducts__/graphics/icons/plastic-waste.png",
+  icon_size = 64, icon_mipmaps = 4,
+  order = "z[plastic-waste]",
+  subgroup = "intermediate-product",
+  stack_size = 100
+  
+}}
+data:extend(plastic_waste)
+
+-- solid pyrolysis oil
+local solid_pyrolysis_oil = {{
+  type = "item",
+  name = "solid-pyrolysis-oil",
+  icon = "__toms-byproducts__/graphics/icons/solid-pyrolysis-oil.png",
+  icon_size = 64, icon_mipmaps = 4,
+  fuel_category = "chemical",
+  fuel_value = "15MJ",
+  fuel_acceleration_multiplier = 1.2,
+  fuel_top_speed_multiplier = 1.05,
+  subgroup = "raw-material",
+  order = "c[solid-pyrolysis-oil]",
+  fuel_emissions_multiplier = 1.25,
+  stack_size = 50
+}
+}
+data:extend(solid_pyrolysis_oil)
+
+-- liquid_pyrolysis_oil is in data.lua to allow autobarreling
+-- liquid pyrolysis oil added here for barreling
+local liquid_pyrolysis_oil ={{
+  type = "fluid",
+  name = "liquid-pyrolysis-oil",
+  default_temperature = 25,
+  heat_capacity = "0.1KJ",
+  base_color = {r=0.8,g=0.8,b=0.8},
+  flow_color = {r=0.8,g=0.8,b=0.8},
+  icon = "__toms-byproducts__/graphics/icons/liquid-pyrolysis-oil.png",
+  icon_size = 64, icon_mipmaps = 4,
+  order = "a[fluid]-z[liquid_pyrolysis_oil]",
+  auto_barrel = true
+}}
+data:extend(liquid_pyrolysis_oil)
+
+table.insert(data.raw["fluid-turret"]["flamethrower-turret"].attack_parameters.fluids, {type="liquid-pyrolysis-oil", damage_modifier=1.15})
+
+-- convert plastic to liquid pyrolysis oil
+local plastic_to_pyro = {{
+  type = "recipe",
+  name = "plastic-to-pyro",
+  category = "chemistry",
+  subgroup="fluid-recipes",
+  enabled = true,
+  energy_required = 5.0,
+  ingredients = {{type="item", name="plastic-bar", amount=5}},
+  results = {{type="fluid",name="liquid-pyrolysis-oil", amount=50}}
+}}
+data:extend(plastic_to_pyro)
+
+-- convert plastic waste to liquid pyrolysis oil
+local plastic_waste_to_pyro = {{
+  type = "recipe",
+  name = "plastic-waste-to-pyro",
+  category = "chemistry",
+  subgroup="fluid-recipes",
+  enabled = true,
+  energy_required = 5.0,
+  ingredients = {{type="item", name="plastic-waste", amount=10}},
+  results = {{type="fluid",name="liquid-pyrolysis-oil", amount=25}}
+}}
+data:extend(plastic_waste_to_pyro)
+
+local plastic_waste_to_plastic = {{
+  type = "recipe",
+  name = "plastic-waste-to-plastic",
+  category = "smelting",
+  energy_required = 2,
+  enabled = true,
+  ingredients = {{type="item", name="plastic-waste", amount = 10}},
+  results = {{type="item", name = "plastic-bar", amount = 1}}
+
+}}
+data:extend(plastic_waste_to_plastic)
+
+local pyro_oil_liquid_to_solid = {{
+  type = "recipe",
+  name = "pyrolysis-oil-liquid-to-solid",
+  category = "chemistry",
+  energy_required = 1,
+  enabled = true,
+  ingredients = {{type="fluid", name="liquid-pyrolysis-oil", amount=50}},
+  results = {{type="item", name="solid-pyrolysis-oil", amount = 1}}
+}}
+data:extend(pyro_oil_liquid_to_solid)
+
+
+
+
+-- plastic bar waste
+data.raw["recipe"]["plastic-bar"].result_count = 3
+table.insert(data.raw["recipe"]["plastic-bar"].results, 0, {type="item", name = "plastic-waste", amount = 1})
+data.raw["recipe"]["plastic-bar"].main_product = "plastic-bar"
 
 -- electronic circuit waste
 data.raw["recipe"]["electronic-circuit"].result_count = 2
@@ -195,9 +302,10 @@ data.raw["recipe"]["electronic-circuit"].normal.main_product = "electronic-circu
 data.raw["recipe"]["electronic-circuit"].expensive.main_product = "electronic-circuit"
 
 --advanced circuit waste
-data.raw["recipe"]["advanced-circuit"].result_count = 2
+data.raw["recipe"]["advanced-circuit"].result_count = 3
 local acirc_results = {
   {type="item", name="spent-etchant", amount=1},
+  {type="item", name="plastic-waste", amount = 1},
   {type="item", name="advanced-circuit", amount=1}
 }
 data.raw["recipe"]["advanced-circuit"].expensive.results = acirc_results
