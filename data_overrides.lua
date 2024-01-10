@@ -2,6 +2,71 @@
 
 
 
+
+-- function to add product to recipe intelligently.
+-- adds the byproducts instead of overwriting, to allow for mod support!
+-- byproducts is a table
+local function add_byproduct(recipe, byproducts)
+  
+  -- check to see if it has a standard result
+  if (recipe.result ~= "" and recipe.result ~= nil) then
+    local count = 1
+    if(recipe.result_count ~= nil) then
+      count = recipe.result_count
+    end
+    recipe.results = {{type="item", name=recipe.result, amount = count}}
+    recipe.main_product = recipe.result
+    recipe.result = nil
+  end
+  for i, product in pairs(byproducts) do
+    -- inserts at the end, so that the byproducts are removed from machines last
+    table.insert(recipe.results, #recipe.results, product)
+  end
+  
+end
+
+-- add an icon and main product, for stuff like plastic
+local function add_byproduct_specify(recipe, byproducts, main_product)
+  recipe.main_product = main_product
+  add_byproduct(recipe, byproducts)
+  
+end
+
+
+local function add_byproduct_expensive(recipe, byproducts)
+  --recipe.subgroup = subgroup
+  -- check to see if it has a standard result
+  if (recipe.normal.result ~= "" and recipe.normal.result ~= nil) then
+    local expcount = 1
+    local normcount = 1
+    if(recipe.normal.result_count ~= nil) then
+      normcount = recipe.result_count
+    end
+    if(recipe.expensive.result_count ~= nil) then
+      expcount = recipe.result_count
+    end
+    recipe.normal.results = {{type="item", name=recipe.normal.result, amount = normcount}}
+    recipe.expensive.results = {{type="item", name=recipe.expensive.result, amount = expcount}}
+    recipe.main_product = recipe.normal.result
+    recipe.normal.main_product = recipe.normal.result
+    recipe.expensive.main_product = recipe.expensive.result
+    recipe.result = nil
+  end
+  for i, product in pairs(byproducts) do
+    -- inserts at the end, so that the byproducts are removed from machines last
+    table.insert(recipe.normal.results, #recipe.normal.results, product)
+    table.insert(recipe.expensive.results, #recipe.expensive.results, product)
+  end
+  
+end
+
+local function add_byproduct_expensive_specify(recipe, byproducts,main_product)
+  recipe.normal.main_product = main_product
+  recipe.expensive.main_product = main_product
+  recipe.main_product = main_product  
+  add_byproduct_expensive(recipe, byproducts)
+end
+
 -- slag definitions
 local slag = table.deepcopy(data.raw["item"]["stone"])
 slag.name = "slag"
@@ -38,37 +103,16 @@ slag.pictures =
 }
 data:extend{slag}
 
--- modify iron plate recipe
-data.raw["recipe"]["iron-plate"].result_count = 2
-data.raw["recipe"]["iron-plate"].results = {
-  {type="item", name="slag", amount=1},
-  {type="item", name="iron-plate", amount=1}
-}
-data.raw["recipe"]["iron-plate"].main_product = "iron-plate" -- makes the icon etc for iron plate, because slag is a byproduct. 
+add_byproduct(data.raw["recipe"]["iron-plate"], {{type="item", name="slag", amount=1}})
+add_byproduct(data.raw["recipe"]["copper-plate"], {{type="item", name="slag", amount=1}})
 
--- modify copper plate recipe
-data.raw["recipe"]["copper-plate"].result_count = 2
-data.raw["recipe"]["copper-plate"].results = {
-  {type="item", name="slag", amount=1},
-  {type="item", name="copper-plate", amount=1}
-}
-data.raw["recipe"]["copper-plate"].main_product = "copper-plate"
 
 -- steel slag modifications
-data.raw["recipe"]["steel-plate"].result_count = 2
-data.raw["recipe"]["steel-plate"].normal.result= ""
-data.raw["recipe"]["steel-plate"].normal.results= {{type="item", name="slag", amount = 1, probability = 0.25},{type="item", name="steel-plate", amount = 1}}
-data.raw["recipe"]["steel-plate"].expensive.result= ""
-data.raw["recipe"]["steel-plate"].expensive.results= {{type="item", name="slag", amount = 1, probability = 0.25},{type="item", name="steel-plate", amount = 1}}
-data.raw["recipe"]["steel-plate"].main_product = "steel-plate"
-data.raw["recipe"]["steel-plate"].icon = "__base__/graphics/icons/steel-plate.png"
-data.raw["recipe"]["steel-plate"].subgroup = "raw-material"
-data.raw["recipe"]["steel-plate"].icon_size = 64
-data.raw["recipe"]["steel-plate"].icon_mipmaps = 4
+add_byproduct_expensive_specify(data.raw["recipe"]["steel-plate"], {{type="item", name="slag", amount = 1, probability = 0.25}},"steel-plate")
 
 -- modify uranium processing recipe
-data.raw["recipe"]["uranium-processing"].result_count = 3
-table.insert(data.raw["recipe"]["uranium-processing"].results, 0, {type="item", name="slag", amount = 3})
+add_byproduct(data.raw["recipe"]["uranium-processing"], {{type="item", name="slag", amount = 3}})
+
 
 
 
@@ -307,73 +351,28 @@ data:extend(pyro_oil_liquid_to_solid)
 
 
 -- plastic bar waste
-data.raw["recipe"]["plastic-bar"].result_count = 3
-table.insert(data.raw["recipe"]["plastic-bar"].results, 1, {type="item", name = "plastic-waste", amount = 1})
-data.raw["recipe"]["plastic-bar"].main_product = "plastic-bar"
+add_byproduct_specify(data.raw["recipe"]["plastic-bar"], {{type="item", name = "plastic-waste", amount = 1}}, "plastic-bar")
 
 -- electronic circuit waste
-data.raw["recipe"]["electronic-circuit"].result_count = 2
-local ecirc_results = {
-  {type="item", name="spent-etchant", amount=1},
-  {type="item", name="electronic-circuit", amount=1}
-}
-data.raw["recipe"]["electronic-circuit"].expensive.results = ecirc_results
-data.raw["recipe"]["electronic-circuit"].normal.results = ecirc_results
-data.raw["recipe"]["electronic-circuit"].normal.main_product = "electronic-circuit"
-data.raw["recipe"]["electronic-circuit"].expensive.main_product = "electronic-circuit"
+add_byproduct_expensive_specify(data.raw["recipe"]["electronic-circuit"],{{type="item", name="spent-etchant", amount=1}}, "electronic-circuit")
 
---advanced circuit waste
-data.raw["recipe"]["advanced-circuit"].result_count = 3
-local acirc_results = {
-  {type="item", name="spent-etchant", amount=1},
-  {type="item", name="plastic-waste", amount = 1},
-  {type="item", name="advanced-circuit", amount=1}
-}
-data.raw["recipe"]["advanced-circuit"].expensive.results = acirc_results
-data.raw["recipe"]["advanced-circuit"].normal.results = acirc_results
-data.raw["recipe"]["advanced-circuit"].normal.main_product = "advanced-circuit"
-data.raw["recipe"]["advanced-circuit"].expensive.main_product = "advanced-circuit"
+---advanced circuit waste
+add_byproduct_expensive_specify(data.raw["recipe"]["advanced-circuit"], {{type="item", name="spent-etchant", amount=1}, {type="item", name="plastic-waste", amount = 1}}, "advanced-circuit")
 
 --processing unit waste
-data.raw["recipe"]["processing-unit"].result_count = 2
-local pu_results = {
-  {type="item", name="spent-etchant", amount=1},
-  {type="item", name="processing-unit", amount=1}
-}
-data.raw["recipe"]["processing-unit"].expensive.results = pu_results
-data.raw["recipe"]["processing-unit"].normal.results = pu_results
-data.raw["recipe"]["processing-unit"].normal.main_product = "processing-unit"
-data.raw["recipe"]["processing-unit"].expensive.main_product = "processing-unit"
+add_byproduct_expensive_specify(data.raw["recipe"]["processing-unit"], {{type="item", name="spent-etchant", amount=1}}, "processing-unit")
 
 -- rocket control unit waste
-data.raw["recipe"]["rocket-control-unit"].result_count = 2
-local rcu_results = {
-  {type="item", name="spent-etchant", amount=1},
-  {type="item", name="rocket-control-unit", amount=1}
-}
-data.raw["recipe"]["rocket-control-unit"].results = rcu_results
-data.raw["recipe"]["rocket-control-unit"].main_product = "rocket-control-unit"
+add_byproduct(data.raw["recipe"]["rocket-control-unit"], {{type="item", name="spent-etchant", amount=1}})
+
+
 
 -- military science waste
-data.raw["recipe"]["military-science-pack"].result_count = 3
-data.raw["recipe"]["military-science-pack"].main_product = "military-science-pack"
-data.raw["recipe"]["military-science-pack"].results = {
-  {type="item", name = "slag", amount = 1},
-  {type="item", name = "military-science-pack", amount = 2}
-}
+add_byproduct(data.raw["recipe"]["military-science-pack"], {{type="item", name = "slag", amount = 1}})
+
 
 -- production science waste
-data.raw["recipe"]["production-science-pack"].result_count = 4
-data.raw["recipe"]["production-science-pack"].main_product = "production-science-pack"
-data.raw["recipe"]["production-science-pack"].results = {
-  {type="item", name = "slag", amount = 1},
-  {type="item", name = "production-science-pack", amount = 3}
-}
+add_byproduct(data.raw["recipe"]["production-science-pack"], {{type="item", name = "slag", amount = 1}})
 
 -- utility science waste
-data.raw["recipe"]["utility-science-pack"].result_count = 4
-data.raw["recipe"]["utility-science-pack"].main_product = "utility-science-pack"
-data.raw["recipe"]["utility-science-pack"].results = {
-  {type="item", name = "spent-etchant", amount = 1},
-  {type="item", name = "utility-science-pack", amount = 3}
-}
+add_byproduct(data.raw["recipe"]["utility-science-pack"], {{type="item", name = "spent-etchant", amount = 1}})
