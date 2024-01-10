@@ -13,10 +13,11 @@ local function add_byproduct(recipe, byproducts)
     local count = 1
     if(recipe.result_count ~= nil) then
       count = recipe.result_count
+      recipe.result_count = nil
     end
     recipe.results = {{type="item", name=recipe.result, amount = count}}
     recipe.main_product = recipe.result
-    recipe.result = nil
+    recipe.result = nil -- set to nil to increase mod compatibility
   end
   for i, product in pairs(byproducts) do
     -- inserts at the end, so that the byproducts are removed from machines last
@@ -40,17 +41,22 @@ local function add_byproduct_expensive(recipe, byproducts)
     local expcount = 1
     local normcount = 1
     if(recipe.normal.result_count ~= nil) then
-      normcount = recipe.result_count
+      normcount = recipe.normal.result_count
     end
     if(recipe.expensive.result_count ~= nil) then
-      expcount = recipe.result_count
+      expcount = recipe.expensive.result_count
     end
+    recipe.result_count = nil
+    recipe.expensive.result_count = nil
+    recipe.normal.result_count = nil
     recipe.normal.results = {{type="item", name=recipe.normal.result, amount = normcount}}
     recipe.expensive.results = {{type="item", name=recipe.expensive.result, amount = expcount}}
     recipe.main_product = recipe.normal.result
     recipe.normal.main_product = recipe.normal.result
     recipe.expensive.main_product = recipe.expensive.result
     recipe.result = nil
+    recipe.normal.result = nil
+    recipe.expensive.result = nil
   end
   for i, product in pairs(byproducts) do
     -- inserts at the end, so that the byproducts are removed from machines last
@@ -347,6 +353,19 @@ local pyro_oil_liquid_to_solid = {{
 }}
 data:extend(pyro_oil_liquid_to_solid)
 
+local copper_sulfate = {{
+  type = "item",
+  name = "tbp-copper-sulfate",
+  icon = "__toms-byproducts__/graphics/icons/copper-sulfate.png",
+  icon_size = 64, icon_mipmaps = 4,
+  order = "z[tbp-copper-sulfate]",
+  subgroup = "intermediate-product",
+  stack_size = 50
+}}
+data:extend(copper_sulfate)
+
+
+
 
 
 
@@ -360,12 +379,13 @@ add_byproduct_expensive_specify(data.raw["recipe"]["electronic-circuit"],{{type=
 add_byproduct_expensive_specify(data.raw["recipe"]["advanced-circuit"], {{type="item", name="spent-etchant", amount=1}, {type="item", name="plastic-waste", amount = 1}}, "advanced-circuit")
 
 --processing unit waste
-add_byproduct_expensive_specify(data.raw["recipe"]["processing-unit"], {{type="item", name="spent-etchant", amount=1}}, "processing-unit")
+add_byproduct_expensive_specify(data.raw["recipe"]["processing-unit"], {{type="item", name="spent-etchant", amount=1}, {type="item", name="tbp-copper-sulfate", amount = 1}}, "processing-unit")
 
 -- rocket control unit waste
-add_byproduct(data.raw["recipe"]["rocket-control-unit"], {{type="item", name="spent-etchant", amount=1}})
+add_byproduct(data.raw["recipe"]["rocket-control-unit"], {{type="item", name="spent-etchant", amount=1}, {type="item", name="tbp-copper-sulfate", amount = 1} , {type="item", name="plastic-waste", amount = 1}})
 
-
+-- battery waste
+add_byproduct_expensive(data.raw["recipe"]["battery"], {{type="item", name="tbp-copper-sulfate", amount = 1}})
 
 -- military science waste
 add_byproduct(data.raw["recipe"]["military-science-pack"], {{type="item", name = "slag", amount = 1}})
@@ -376,3 +396,4 @@ add_byproduct(data.raw["recipe"]["production-science-pack"], {{type="item", name
 
 -- utility science waste
 add_byproduct(data.raw["recipe"]["utility-science-pack"], {{type="item", name = "spent-etchant", amount = 1}})
+add_byproduct(data.raw["recipe"]["chemical-science-pack"], {{type="item", name = "plastic-waste", amount = 1},{type="item", name="tbp-copper-sulfate", amount = 1}})
