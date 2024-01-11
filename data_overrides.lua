@@ -364,10 +364,33 @@ local copper_sulfate = {{
 }}
 data:extend(copper_sulfate)
 
+local copper_sulfate_decomp = {{
+  type = "recipe",
+  name = "tbp-copper-sulfate-decomp",
+  category = "chemistry",
+  energy_required = 0.5,
+  icon = "__toms-byproducts__/graphics/icons/copper-sulfate.png",
+  icon_size = 64, icon_mipmaps = 4,
+  enabled = true,
+  ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="water", amount = 1}},
+  results = {{type="item", name = "copper-plate", amount = 1, probability = 0.1}, {type="item", name="sulfur", amount = 1, probability = 0.1}},
+  subgroup = "intermediate-product"
+}}
+data:extend(copper_sulfate_decomp)
 
-
-
-
+local copper_sulfate_to_lube = {{
+  type = "recipe",
+  name = "tbp-copper-sulfate-to-lube",
+  category = "chemistry",
+  energy_required = 2,
+  icon = "__toms-byproducts__/graphics/icons/copper-sulfate.png",
+  icon_size = 64, icon_mipmaps = 4,
+  enabled = true,
+  ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="liquid-pyrolysis-oil", amount = 10}},
+  results = {{type="fluid", name = "lubricant", amount = 1}},
+  subgroup = "fluid-recipes"
+}}
+data:extend(copper_sulfate_to_lube)
 
 -- plastic bar waste
 add_byproduct_specify(data.raw["recipe"]["plastic-bar"], {{type="item", name = "plastic-waste", amount = 1}}, "plastic-bar")
