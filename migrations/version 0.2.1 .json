@@ -1,0 +1,24 @@
+{
+    "item":
+    [
+        ["slag", "tbp-slag"],
+        ["spent-etchant", "tbp-spent-etchant"],
+        ["plastic-waste", "tbp-plastic-waste"],
+        ["solid-pyrolysis-oil", "tbp-solid-pyrolysis-oil"]
+    ],
+    "recipe":
+    [
+        ["etchant-advanced-metal-reclamation", "tbp-etchant-advanced-metal-reclamation"],
+        ["etchant-metal-reclamation", "tbp-etchant-metal-reclamation"],
+        ["plastic-waste-to-plastic", "tbp-plastic-waste-to-plastic"],
+        ["plastic-waste-to-pyro", "tbp-plastic-waste-to-pyro"],
+        ["slag-smelting", "tbp-slag-smelting"],
+        ["slag-trace-extraction", "tbp-slag-trace-extraction"],
+        ["plastic-to-pyro", "tbp-plastic-to-pyro"],
+        ["pyrolysis-oil-liquid-to-solid", "tbp-pyrolysis-oil-liquid-to-solid"]
+    ],
+    "fluid":
+    [
+        ["liquid-pyrolysis-oil","tbp-liquid-pyrolysis-oil"]
+    ]
+}
