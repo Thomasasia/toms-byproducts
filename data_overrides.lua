@@ -275,7 +275,7 @@ local liquid_pyrolysis_oil ={{
   flow_color = {r=0.8,g=0.8,b=0.8},
   icon = "__toms-byproducts__/graphics/icons/liquid-pyrolysis-oil.png",
   icon_size = 64, icon_mipmaps = 4,
-  order = "a[fluid]-z[liquid_pyrolysis_oil]",
+  order = "a[fluid]-z[tbp-liquid_pyrolysis_oil]",
   auto_barrel = true
 }}
 data:extend(liquid_pyrolysis_oil)
