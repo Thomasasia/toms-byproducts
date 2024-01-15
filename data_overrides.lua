@@ -264,7 +264,6 @@ local solid_pyrolysis_oil = {{
 }
 data:extend(solid_pyrolysis_oil)
 
--- liquid_pyrolysis_oil is in data.lua to allow autobarreling
 -- liquid pyrolysis oil added here for barreling
 local liquid_pyrolysis_oil ={{
   type = "fluid",
