@@ -1,6 +1,8 @@
 --recipe_overrides.lua
 
--- adds a byproduct without replacing the recipe, ideally to allow for better mod support
+-- function to add product to recipe intelligently.
+-- adds the byproducts instead of overwriting, to allow for mod support!
+-- byproducts is a table
 local function add_byproduct(recipe, byproducts)
   
   -- check to see if it has a standard result
