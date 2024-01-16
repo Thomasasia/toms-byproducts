@@ -52,7 +52,7 @@ local slag_trace_extraction = {{
     },
     {
       name = "uranium-ore",
-      probability = 0.01,
+      probability = 0.05,
       amount = 1
     },
     {
