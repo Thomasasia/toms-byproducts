@@ -131,3 +131,6 @@ add_byproduct_specify(data.raw["recipe"]["sulfur"], {{type="fluid", name="tbp-pe
 add_byproduct_specify(data.raw["recipe"]["solid-fuel-from-petroleum-gas"], {{type="fluid", name="tbp-petroleum-sludge", amount = 5}}, "solid-fuel")
 add_byproduct_specify(data.raw["recipe"]["solid-fuel-from-light-oil"], {{type="fluid", name="tbp-petroleum-sludge", amount = 5}}, "solid-fuel")
 add_byproduct_specify(data.raw["recipe"]["solid-fuel-from-heavy-oil"], {{type="fluid", name="tbp-petroleum-sludge", amount = 10}}, "solid-fuel")
+
+-- plutonium
+add_byproduct(data.raw["recipe"]["nuclear-fuel-reprocessing"], {{type="item", name = "tbp-plutonium", amount = 1, probability = 0.5}})

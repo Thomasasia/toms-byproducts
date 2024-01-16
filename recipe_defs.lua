@@ -256,6 +256,7 @@ local ash_trace_extraction = {{
 }}
 data:extend(ash_trace_extraction)
 
+-- turn ash sludge into asphalt (cement)
 local ash_asphalt = {{
     type = "recipe",
     name = "tbp-ash-asphalt",
@@ -268,6 +269,7 @@ local ash_asphalt = {{
 }}
 data:extend(ash_asphalt)
 
+-- turn petroleum sludge into solid fuel
 local solid_fuel_from_petroleum_sludge = {{
     type = "recipe",
     name = "tbp-solid-fuel-from-petroleum-sludge",
@@ -295,6 +297,7 @@ local solid_fuel_from_petroleum_sludge = {{
 }}
 data:extend(solid_fuel_from_petroleum_sludge)
 
+-- make explosives using byproducts
 local explosives_from_copper_sulfide_and_petroleum_sludge = {{
     type = "recipe",
     name = "tbp-explosives_from_cs_and_ps",
@@ -317,6 +320,7 @@ local explosives_from_copper_sulfide_and_petroleum_sludge = {{
 }}
 data:extend(explosives_from_copper_sulfide_and_petroleum_sludge)
 
+-- decompose petroleum sludge to gas and ash sludge
 local petroleum_sludge_to_petroleum_and_ash_sludge = {{
     type = "recipe",
     name = "tbp-petroleum-sludge-to-petroleum-and-ash",
@@ -341,4 +345,57 @@ local petroleum_sludge_to_petroleum_and_ash_sludge = {{
 }}
 data:extend(petroleum_sludge_to_petroleum_and_ash_sludge)
 
+-- plutonium fuel cell creation
+local plutonium_fuel = {
+    {
+    type = "recipe",
+    name = "tbp-plutonium-fuel",
+    energy_required = 90,
+    enabled = true,
+    category = "centrifuging",
+    ingredients = {{"tbp-plutonium", 1}, {"rocket-fuel", 1}},
+    icon = "__toms-byproducts__/graphics/icons/plutonium-fuel.png",
+    icon_size = 64, icon_mipmaps = 4,
+    result = "tbp-plutonium-fuel"
+  }
+}
+data:extend(plutonium_fuel)
 
+-- plutonium fuel cell
+local plutonium_fuel_cell = {
+    {
+    type = "recipe",
+    name = "tbp-plutonium-fuel-cell",
+    energy_required = 10,
+    enabled = true,
+    ingredients =
+    {
+      {"iron-plate", 5},
+      {"tbp-plutonium", 1},
+      {"uranium-238", 6}
+    },
+    result = "tbp-plutonium-fuel-cell",
+    result_count = 3
+    }
+}
+data:extend(plutonium_fuel_cell)
+
+-- get uranium from the spent cells
+local plutonium_fuel_reprocessing = {
+    {
+    type = "recipe",
+    name = "tbp-plutonium-fuel-reprocessing",
+    energy_required = 60,
+    enabled = true,
+    category = "centrifuging",
+    ingredients = {{"tbp-used-up-plutonium-fuel-cell", 5}},
+    icon = "__toms-byproducts__/graphics/icons/plutonium-fuel-reprocessing.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "intermediate-product",
+    order = "r[uranium-processing]-b[plutonium-fuel-reprocessing]",
+    main_product = "",
+    results = {{"uranium-238", 3}},
+    allow_decomposition = false
+  }
+}
+data:extend(plutonium_fuel_reprocessing)
