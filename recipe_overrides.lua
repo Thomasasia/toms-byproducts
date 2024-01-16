@@ -30,7 +30,7 @@ local function add_byproduct_specify(recipe, byproducts, main_product)
   
 end
 
-
+-- use the expensive varients of the functions when the recipe has normal and expensive varients
 local function add_byproduct_expensive(recipe, byproducts)
   --recipe.subgroup = subgroup
   -- check to see if it has a standard result

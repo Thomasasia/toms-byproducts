@@ -1,6 +1,6 @@
 -- barreling.lua
 
-
+-- in the case of a migration, this script will ensure the proper barreling recipes are present. 
 
 
 for index, force in pairs(game.forces) do
