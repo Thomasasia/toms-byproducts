@@ -197,4 +197,77 @@ local copper_sulfate_to_lube = {{
 }}
 data:extend(copper_sulfate_to_lube)
 
+-- turn coal into ash sludge
+local coal_ashing = {{
+    type = "recipe",
+    name = "tbp-coal-ashing",
+    category = "chemistry",
+    subgroup="fluid-recipes",
+    energy_required = 1,
+    emissions_multiplier = 2.0,
+    icon = "__toms-byproducts__/graphics/icons/ash-sludge.png",
+    icon_size = 64, icon_mipmaps = 4,
+    enabled = true,
+    ingredients = {{type="item", name="coal", amount = 5}, {type="fluid", name="water", amount = 30}},
+    results = {{type="fluid", name="tbp-ash-sludge", amount = 30}},
+    subroup = "intermediate-product"
+
+}}
+data:extend(coal_ashing)
+
+-- trace extraction from ash sludge
+local ash_trace_extraction = {{
+    type = "recipe",
+    name = "tbp-ash-trace-extraction",
+    subgroup = "intermediate-product",
+    category = "chemistry",
+    energy_required = 4,
+    icon = "__toms-byproducts__/graphics/icons/ash-sludge.png",
+    icon_size = 64, icon_mipmaps = 4,
+    enabled = true,
+    ingredients = {{type="fluid", name="tbp-ash-sludge", amount = 60}},
+    results = {
+    {
+      name = "iron-ore",
+      probability = 0.75,
+      amount = 1
+    },
+    {
+      name = "copper-ore",
+      probability = 0.75,
+      amount = 1
+    },
+    {
+      name = "stone",
+      probability = 0.75,
+      amount = 1
+    },
+    {
+      name = "uranium-ore",
+      probability = 0.5, -- high chance of uranium to enable north korean style uranium extraction
+      amount = 1
+    },
+    {
+      name = "sulfur",
+      probability = 0.65,
+      amount = 1
+    },
+  }
+}}
+data:extend(ash_trace_extraction)
+
+local ash_asphalt = {{
+    type = "recipe",
+    name = "tbp-ash-asphalt",
+    energy_required = 10,
+    enabled = true,
+    category = "crafting-with-fluid",
+    ingredients = {{type = "fluid", name = "tbp-ash-sludge", amount = 150}},
+    results = {{type="item", name="concrete", amount = "10"}}
+
+}}
+data:extend(ash_asphalt)
+
+
+
 
