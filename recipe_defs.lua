@@ -268,6 +268,77 @@ local ash_asphalt = {{
 }}
 data:extend(ash_asphalt)
 
+local solid_fuel_from_petroleum_sludge = {{
+    type = "recipe",
+    name = "tbp-solid-fuel-from-petroleum-sludge",
+    category = "chemistry",
+    energy_required = 3,
+    ingredients = {
+        {type = "fluid", name = "tbp-petroleum-sludge", amount = 100}
+    },
+    results=
+    {
+      {type="item", name="solid-fuel", amount=1}
+    },
+    icon = "__base__/graphics/icons/solid-fuel.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "fluid-recipes",
+    enabled = true,
+    order = "b[fluid-chemistry]-d[solid-fuel-from-petroleum-sludge]",
+    crafting_machine_tint =
+    {
+      primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+      secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+      tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+      quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+    }
+}}
+data:extend(solid_fuel_from_petroleum_sludge)
 
+local explosives_from_copper_sulfide_and_petroleum_sludge = {{
+    type = "recipe",
+    name = "tbp-explosives_from_cs_and_ps",
+    category = "chemistry",
+    crafting_machine_tint =
+    {
+      primary = {r = 0.968, g = 0.381, b = 0.259, a = 1.000}, -- #f66142ff
+      secondary = {r = 0.892, g = 0.664, b = 0.534, a = 1.000}, -- #e3a988ff
+      tertiary = {r = 1.000, g = 0.978, b = 0.513, a = 1.000}, -- #fff982ff
+      quaternary = {r = 0.210, g = 0.170, b = 0.013, a = 1.000}, -- #352b03ff
+    },
+    energy_required = 5,
+    enabled = true,
+    ingredients = {
+        {type = "item", name = "tbp-copper-sulfate", amount = 5},
+        {type = "fluid", name = "tbp-petroleum-sludge", amount = 100}
+    },
+    result = "explosives",
+    result_count = 2
+}}
+data:extend(explosives_from_copper_sulfide_and_petroleum_sludge)
+
+local petroleum_sludge_to_petroleum_and_ash_sludge = {{
+    type = "recipe",
+    name = "tbp-petroleum-sludge-to-petroleum-and-ash",
+    category = "chemistry",
+    crafting_machine_tint =
+    {
+      primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
+      secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
+      tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
+      quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
+    },
+    energy_required = 3,
+    enabled = true,
+    ingredients = {{type = "fluid", name = "tbp-petroleum-sludge", amount = 100}},
+    results = {
+        {type = "fluid", name = "petroleum-gas", amount = 30},
+        {type = "fluid", name = "tbp-ash-sludge", amount = 30}
+    },
+    subgroup = "fluid-recipes",
+    icon = "__toms-byproducts__/graphics/icons/petroleum-sludge.png",
+    icon_size = 64, icon_mipmaps = 4,
+}}
+data:extend(petroleum_sludge_to_petroleum_and_ash_sludge)
 
 
