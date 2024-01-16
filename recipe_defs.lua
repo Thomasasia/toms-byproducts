@@ -83,6 +83,7 @@ local spent_etchant_to_copper = {{
 }}
 data:extend(spent_etchant_to_copper)
 
+-- the advanced version turns the spent etchant directly into copper cables, which is more efficient if you plan on making it copper cables anyway.
 local spent_etchant_to_copper_adv = {{
   type = "recipe",
   name = "tbp-etchant-advanced-metal-reclamation",
@@ -134,6 +135,7 @@ local plastic_waste_to_pyro = {{
 }}
 data:extend(plastic_waste_to_pyro)
 
+-- smelting plastic waste down into plastic
 local plastic_waste_to_plastic = {{
   type = "recipe",
   name = "tbp-plastic-waste-to-plastic",
@@ -146,6 +148,7 @@ local plastic_waste_to_plastic = {{
 }}
 data:extend(plastic_waste_to_plastic)
 
+-- turn pyrolysis oil into the solid fuel version
 local pyro_oil_liquid_to_solid = {{
   type = "recipe",
   name = "tbp-pyrolysis-oil-liquid-to-solid",
@@ -164,7 +167,7 @@ local pyro_oil_liquid_to_solid = {{
 }}
 data:extend(pyro_oil_liquid_to_solid)
 
-
+-- decompose copper sulfate into sulfur and copper
 local copper_sulfate_decomp = {{
   type = "recipe",
   name = "tbp-copper-sulfate-decomp",
@@ -179,6 +182,7 @@ local copper_sulfate_decomp = {{
 }}
 data:extend(copper_sulfate_decomp)
 
+-- turn copper sulfate into lube using pyrolysis oil. 
 local copper_sulfate_to_lube = {{
   type = "recipe",
   name = "tbp-copper-sulfate-to-lube",
