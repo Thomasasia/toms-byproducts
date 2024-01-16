@@ -79,7 +79,7 @@ local solid_pyrolysis_oil = {{
 }
 data:extend(solid_pyrolysis_oil)
 
--- liquid pyrolysis oil added here for barreling
+-- liquid pyrolysis oil
 local liquid_pyrolysis_oil ={{
   type = "fluid",
   name = "tbp-liquid-pyrolysis-oil",
@@ -94,6 +94,7 @@ local liquid_pyrolysis_oil ={{
 }}
 data:extend(liquid_pyrolysis_oil)
 
+-- copper sulfate
 local copper_sulfate = {{
   type = "item",
   name = "tbp-copper-sulfate",
