@@ -9,6 +9,8 @@ for index, force in pairs(game.forces) do
     force.recipes["empty-tbp-liquid-pyrolysis-oil-barrel"].enabled = true
     force.recipes["fill-tbp-ash-sludge-barrel"].enabled = true
     force.recipes["empty-tbp-ash-sludge-barrel"].enabled = true
+    force.recipes["fill-tbp-petroleum-sludge-barrel"].enabled = true
+    force.recipes["empty-tbp-petroleum-sludge-barrel"].enabled = true
   end
 end
 

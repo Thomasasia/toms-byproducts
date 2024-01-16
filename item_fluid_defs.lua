@@ -107,16 +107,34 @@ local copper_sulfate = {{
 data:extend(copper_sulfate)
 
 -- ash sludge
+-- more purple
 local ash_sludge = {{
     type = "fluid",
     name = "tbp-ash-sludge",
     default_temperature = 25,
     heat_capacity = "0.1KJ",
-    base_color = {r=0,g=0,b=0},
-    flow_color = {r=0.5,g=0.5,b=0.5},
+    base_color = {r=37,g=25,b=56},
+    flow_color = {r=37,g=25,b=56},
     icon = "__toms-byproducts__/graphics/icons/ash-sludge.png",
     icon_size = 64, icon_mipmaps = 4,
     order = "a[fluid]-z[tbp-ash-sludge]",
+    auto_barrel = true
+
+}}
+data:extend(ash_sludge)
+
+-- ash sludge
+-- more grey
+local ash_sludge = {{
+    type = "fluid",
+    name = "tbp-petroleum-sludge",
+    default_temperature = 25,
+    heat_capacity = "0.1KJ",
+    base_color = {r=65,g=61,b=71},
+    flow_color = {r=65,g=61,b=71},
+    icon = "__toms-byproducts__/graphics/icons/petroleum-sludge.png",
+    icon_size = 64, icon_mipmaps = 4,
+    order = "a[fluid]-z[tbp-petroleum-sludge]",
     auto_barrel = true
 
 }}
