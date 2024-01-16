@@ -120,3 +120,14 @@ add_byproduct(data.raw["recipe"]["production-science-pack"], {{type="item", name
 -- utility science waste
 add_byproduct(data.raw["recipe"]["utility-science-pack"], {{type="item", name = "tbp-spent-etchant", amount = 1}})
 add_byproduct(data.raw["recipe"]["chemical-science-pack"], {{type="item", name = "tbp-plastic-waste", amount = 1},{type="item", name="tbp-copper-sulfate", amount = 1}})
+
+-- lubricant waste
+add_byproduct_specify(data.raw["recipe"]["lubricant"], {{type="fluid", name="tbp-petroleum-sludge", amount = 5}}, "lubricant")
+
+-- sulfur waste
+add_byproduct_specify(data.raw["recipe"]["sulfur"], {{type="fluid", name="tbp-petroleum-sludge", amount = 5}}, "sulfur")
+
+-- fuel cube waste
+add_byproduct_specify(data.raw["recipe"]["solid-fuel-from-petroleum-gas"], {{type="fluid", name="tbp-petroleum-sludge", amount = 5}}, "solid-fuel")
+add_byproduct_specify(data.raw["recipe"]["solid-fuel-from-light-oil"], {{type="fluid", name="tbp-petroleum-sludge", amount = 5}}, "solid-fuel")
+add_byproduct_specify(data.raw["recipe"]["solid-fuel-from-heavy-oil"], {{type="fluid", name="tbp-petroleum-sludge", amount = 10}}, "solid-fuel")
