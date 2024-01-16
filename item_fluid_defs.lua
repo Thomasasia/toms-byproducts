@@ -174,3 +174,89 @@ local plutonium = {
 }
 data:extend(plutonium)
 
+local plutonium_fuel_cell = {
+    {
+    type = "item",
+    name = "tbp-plutonium-fuel-cell",
+    icon = "__toms-byproducts__/graphics/icons/plutonium-fuel-cell.png",
+    icon_size = 64, icon_mipmaps = 4,
+    pictures =
+    {
+      layers =
+      {
+        {
+          size = 64,
+          filename = "__toms-byproducts__/graphics/icons/plutonium-fuel-cell.png",
+          scale = 0.25,
+          mipmap_count = 4
+        },
+        {
+          draw_as_light = true,
+          flags = {"light"},
+          size = 64,
+          filename = "__toms-byproducts__/graphics/icons/plutonium-fuel-cell.png",
+          scale = 0.25,
+          mipmap_count = 4
+        }
+      }
+    },
+    subgroup = "intermediate-product",
+    order = "r[uranium-processing]-a[tbp-plutonium-fuel-cell]",
+    fuel_category = "nuclear",
+    burnt_result = "tbp-used-up-plutonium-fuel-cell",
+    fuel_value = "10GJ",
+    stack_size = 50
+  }
+}
+data:extend(plutonium_fuel_cell)
+
+local used_plutonium_fuel_cell = {
+  {
+    type = "item",
+    name = "tbp-used-up-plutonium-fuel-cell",
+    icon = "__toms-byproducts__/graphics/icons/used-up-plutonium-fuel-cell.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "intermediate-product",
+    order = "r[used-up-plutonium-fuel-cell]",
+    stack_size = 50
+  }
+}
+data:extend(used_plutonium_fuel_cell)
+
+local plutonium_fuel = {
+    {
+    type = "item",
+    name = "tbp-plutonium-fuel",
+    icon = "__toms-byproducts__/graphics/icons/plutonium-fuel.png",
+    icon_size = 64, icon_mipmaps = 4,
+    pictures =
+    {
+      layers =
+      {
+        {
+          size = 64,
+          filename = "__toms-byproducts__/graphics/icons/plutonium-fuel.png",
+          scale = 0.25,
+          mipmap_count = 4
+        },
+        {
+          draw_as_light = true,
+          flags = {"light"},
+          size = 64,
+          filename = "__toms-byproducts__/graphics/icons/plutonium-fuel.png",
+          scale = 0.25,
+          mipmap_count = 4
+        }
+      }
+    },
+    fuel_category = "chemical",
+    fuel_value = "1.5GJ",
+    fuel_acceleration_multiplier = 2.7,
+    fuel_top_speed_multiplier = 1.2,
+    fuel_glow_color = {r = 8, g = 88, b = 199},
+    subgroup = "intermediate-product",
+    order = "q[plutonium-rocket-fuel]",
+    stack_size = 1
+  }
+}
+data:extend(plutonium_fuel)
