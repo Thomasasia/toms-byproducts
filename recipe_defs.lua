@@ -19,7 +19,8 @@ local slag_bricks_recipe = {{
   enabled = true,
   energy_required = 5.0,
   ingredients = {{"tbp-slag", 5}},
-  result = "stone-brick"
+  result = "stone-brick",
+  allow_decomposition = false
 }}
 data:extend(slag_bricks_recipe)
 
@@ -65,7 +66,8 @@ local slag_trace_extraction = {{
       probability = 0.1,
       amount = 1
     },
-  }
+  },
+  allow_decomposition = false
 }}
 
 data:extend(slag_trace_extraction)
@@ -79,7 +81,8 @@ local spent_etchant_to_copper = {{
   enabled = true,
   energy_required = 6,
   ingredients = {{"tbp-spent-etchant", 10}},
-  result = "copper-plate"
+  result = "copper-plate",
+  allow_decomposition = false
 }}
 data:extend(spent_etchant_to_copper)
 
@@ -91,7 +94,8 @@ local spent_etchant_to_copper_adv = {{
   enabled = true,
   energy_required = 3,
   ingredients = {{"tbp-spent-etchant", 5}},
-  result = "copper-cable"
+  result = "copper-cable",
+  allow_decomposition = false
 }}
 data:extend(spent_etchant_to_copper_adv)
 
@@ -111,7 +115,8 @@ local plastic_to_pyro = {{
       secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
       tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
       quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
-    }
+    },
+  allow_decomposition = false
 }}
 data:extend(plastic_to_pyro)
 
@@ -143,7 +148,8 @@ local plastic_waste_to_plastic = {{
   energy_required = 4,
   enabled = true,
   ingredients = {{type="item", name="tbp-plastic-waste", amount = 10}},
-  results = {{type="item", name = "plastic-bar", amount = 1}}
+  results = {{type="item", name = "plastic-bar", amount = 1}},
+  allow_decomposition = false
 
 }}
 data:extend(plastic_waste_to_plastic)
@@ -163,7 +169,8 @@ local pyro_oil_liquid_to_solid = {{
       secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
       tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
       quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
-    }
+    },
+  allow_decomposition = false
 }}
 data:extend(pyro_oil_liquid_to_solid)
 
@@ -178,7 +185,8 @@ local copper_sulfate_decomp = {{
   enabled = true,
   ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="water", amount = 1}},
   results = {{type="item", name = "copper-plate", amount = 1, probability = 0.1}, {type="item", name="sulfur", amount = 1, probability = 0.1}},
-  subgroup = "intermediate-product"
+  subgroup = "intermediate-product",
+  allow_decomposition = false
 }}
 data:extend(copper_sulfate_decomp)
 
@@ -193,7 +201,8 @@ local copper_sulfate_to_lube = {{
   enabled = true,
   ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="tbp-liquid-pyrolysis-oil", amount = 10}},
   results = {{type="fluid", name = "lubricant", amount = 1}},
-  subgroup = "fluid-recipes"
+  subgroup = "fluid-recipes",
+  allow_decomposition = false
 }}
 data:extend(copper_sulfate_to_lube)
 
@@ -252,7 +261,8 @@ local ash_trace_extraction = {{
       probability = 0.65,
       amount = 1
     },
-  }
+    },
+    allow_decomposition = false
 }}
 data:extend(ash_trace_extraction)
 
@@ -264,8 +274,8 @@ local ash_asphalt = {{
     enabled = true,
     category = "crafting-with-fluid",
     ingredients = {{type = "fluid", name = "tbp-ash-sludge", amount = 150}},
-    results = {{type="item", name="concrete", amount = "10"}}
-
+    results = {{type="item", name="concrete", amount = "10"}},
+    allow_decomposition = false
 }}
 data:extend(ash_asphalt)
 
@@ -293,7 +303,8 @@ local solid_fuel_from_petroleum_sludge = {{
       secondary = {r = 0.659, g = 0.592, b = 0.678, a = 1.000}, -- #a896acff
       tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
       quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
-    }
+    },
+    allow_decomposition = false
 }}
 data:extend(solid_fuel_from_petroleum_sludge)
 
@@ -316,7 +327,8 @@ local explosives_from_copper_sulfide_and_petroleum_sludge = {{
         {type = "fluid", name = "tbp-petroleum-sludge", amount = 100}
     },
     result = "explosives",
-    result_count = 2
+    result_count = 2,
+    allow_decomposition = false
 }}
 data:extend(explosives_from_copper_sulfide_and_petroleum_sludge)
 
@@ -342,6 +354,7 @@ local petroleum_sludge_to_petroleum_and_ash_sludge = {{
     subgroup = "fluid-recipes",
     icon = "__toms-byproducts__/graphics/icons/petroleum-sludge.png",
     icon_size = 64, icon_mipmaps = 4,
+    allow_decomposition = false
 }}
 data:extend(petroleum_sludge_to_petroleum_and_ash_sludge)
 
