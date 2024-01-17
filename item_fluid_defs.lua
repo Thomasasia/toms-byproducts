@@ -140,6 +140,7 @@ local ash_sludge = {{
 }}
 data:extend(ash_sludge)
 
+-- byproduct of nuclear fuel cells
 local plutonium = {
     {
     type = "item",
@@ -174,6 +175,7 @@ local plutonium = {
 }
 data:extend(plutonium)
 
+-- has more juice, for balance reasons. (real plutonium has only about 10% more energy per fission.)
 local plutonium_fuel_cell = {
     {
     type = "item",
@@ -210,6 +212,7 @@ local plutonium_fuel_cell = {
 }
 data:extend(plutonium_fuel_cell)
 
+-- used version
 local used_plutonium_fuel_cell = {
   {
     type = "item",
@@ -223,6 +226,7 @@ local used_plutonium_fuel_cell = {
 }
 data:extend(used_plutonium_fuel_cell)
 
+-- higher fuel value for balance
 local plutonium_fuel = {
     {
     type = "item",

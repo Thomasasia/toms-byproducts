@@ -375,6 +375,7 @@ local plutonium_fuel = {
 data:extend(plutonium_fuel)
 
 -- plutonium fuel cell
+-- gives fewer fuel cells than the uranium recipe, for balance.
 local plutonium_fuel_cell = {
     {
     type = "recipe",
