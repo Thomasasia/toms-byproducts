@@ -19,6 +19,8 @@ local slag_bricks_recipe = {{
   enabled = true,
   energy_required = 5.0,
   ingredients = {{"tbp-slag", 5}},
+  icon = "__toms-byproducts__/graphics/icons/slag-to-brick.png",
+  icon_size = 64, icon_mipmaps = 5,
   result = "stone-brick",
   allow_decomposition = false
 }}
@@ -32,7 +34,7 @@ local slag_trace_extraction = {{
   enabled = false, -- automation
   energy_required = 10,
   ingredients = {{"tbp-slag", 10}},
-  icon = "__toms-byproducts__/graphics/icons/slag.png",
+  icon = "__toms-byproducts__/graphics/icons/slag-processing.png",
   icon_size = 64, icon_mipmaps = 5,
   subgroup = "raw-material",
   results = {
@@ -82,6 +84,8 @@ local spent_etchant_to_copper = {{
   energy_required = 6,
   ingredients = {{"tbp-spent-etchant", 10}},
   result = "copper-plate",
+  icon = "__toms-byproducts__/graphics/icons/spent-etchant-to-copper-plates.png",
+  icon_size = 64, icon_mipmaps = 5,
   allow_decomposition = false
 }}
 data:extend(spent_etchant_to_copper)
@@ -95,6 +99,8 @@ local spent_etchant_to_copper_adv = {{
   energy_required = 3,
   ingredients = {{"tbp-spent-etchant", 5}},
   result = "copper-cable",
+  icon = "__toms-byproducts__/graphics/icons/spent-etchant-to-copper-cables.png",
+  icon_size = 64, icon_mipmaps = 5,
   allow_decomposition = false
 }}
 data:extend(spent_etchant_to_copper_adv)
@@ -180,7 +186,7 @@ local copper_sulfate_decomp = {{
   name = "tbp-copper-sulfate-decomp",
   category = "chemistry",
   energy_required = 0.5,
-  icon = "__toms-byproducts__/graphics/icons/copper-sulfate.png",
+  icon = "__toms-byproducts__/graphics/icons/copper-sulfate-processing.png",
   icon_size = 64, icon_mipmaps = 4,
   enabled = false, -- sulfur processing
   ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="water", amount = 1}},
@@ -231,7 +237,7 @@ local ash_trace_extraction = {{
     subgroup = "intermediate-product",
     category = "chemistry",
     energy_required = 4,
-    icon = "__toms-byproducts__/graphics/icons/ash-sludge.png",
+    icon = "__toms-byproducts__/graphics/icons/ash-sludge-processing.png",
     icon_size = 64, icon_mipmaps = 4,
     enabled = false, -- flamables
     ingredients = {{type="fluid", name="tbp-ash-sludge", amount = 60}},
