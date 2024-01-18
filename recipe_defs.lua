@@ -19,8 +19,8 @@ local slag_bricks_recipe = {{
   enabled = true,
   energy_required = 5.0,
   ingredients = {{"tbp-slag", 5}},
-  icon = "__toms-byproducts__/graphics/icons/slag-to-brick.png",
-  icon_size = 64, icon_mipmaps = 5,
+  icon = "__toms-byproducts__/graphics/icons/slag-smelting.png",
+  icon_size = 64, icon_mipmaps = 4,
   result = "stone-brick",
   allow_decomposition = false
 }}
@@ -34,8 +34,8 @@ local slag_trace_extraction = {{
   enabled = false, -- automation
   energy_required = 10,
   ingredients = {{"tbp-slag", 10}},
-  icon = "__toms-byproducts__/graphics/icons/slag-processing.png",
-  icon_size = 64, icon_mipmaps = 5,
+  icon = "__toms-byproducts__/graphics/icons/slag-trace-extraction.png",
+  icon_size = 64, icon_mipmaps = 4,
   subgroup = "raw-material",
   results = {
     {
@@ -83,9 +83,9 @@ local spent_etchant_to_copper = {{
   enabled = false, -- electronics
   energy_required = 6,
   ingredients = {{"tbp-spent-etchant", 10}},
-  result = "copper-plate",
-  icon = "__toms-byproducts__/graphics/icons/spent-etchant-to-copper-plates.png",
-  icon_size = 64, icon_mipmaps = 5,
+  results = {{type="item", name="copper-plate", amount = 1}},
+  icon = "__toms-byproducts__/graphics/icons/etchant-metal-reclamation.png",
+  icon_size = 64, icon_mipmaps = 4,
   allow_decomposition = false
 }}
 data:extend(spent_etchant_to_copper)
@@ -99,8 +99,8 @@ local spent_etchant_to_copper_adv = {{
   energy_required = 3,
   ingredients = {{"tbp-spent-etchant", 5}},
   result = "copper-cable",
-  icon = "__toms-byproducts__/graphics/icons/spent-etchant-to-copper-cables.png",
-  icon_size = 64, icon_mipmaps = 5,
+  icon = "__toms-byproducts__/graphics/icons/etchant-advanced-metal-reclamation.png",
+  icon_size = 64, icon_mipmaps = 4,
   allow_decomposition = false
 }}
 data:extend(spent_etchant_to_copper_adv)
@@ -122,6 +122,8 @@ local plastic_to_pyro = {{
       tertiary = {r = 0.774, g = 0.631, b = 0.766, a = 1.000}, -- #c5a0c3ff
       quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
     },
+  icon = "__toms-byproducts__/graphics/icons/plastic-to-pyro.png",
+  icon_size = 64, icon_mipmaps = 4,
   allow_decomposition = false
 }}
 data:extend(plastic_to_pyro)
@@ -136,6 +138,8 @@ local plastic_waste_to_pyro = {{
   energy_required = 5.0,
   ingredients = {{type="item", name="tbp-plastic-waste", amount=10}},
   results = {{type="fluid",name="tbp-liquid-pyrolysis-oil", amount=15}},
+  icon = "__toms-byproducts__/graphics/icons/plastic-waste-to-pyro.png",
+  icon_size = 64, icon_mipmaps = 4,
   crafting_machine_tint =
     {
       primary = {r = 0.768, g = 0.631, b = 0.768, a = 1.000}, -- #c3a0c3ff
@@ -155,6 +159,8 @@ local plastic_waste_to_plastic = {{
   enabled = false, -- plastics
   ingredients = {{type="item", name="tbp-plastic-waste", amount = 10}},
   results = {{type="item", name = "plastic-bar", amount = 1}},
+  icon = "__toms-byproducts__/graphics/icons/plastic-waste-to-plastic.png",
+  icon_size = 64, icon_mipmaps = 4,
   allow_decomposition = false
 
 }}
@@ -186,7 +192,7 @@ local copper_sulfate_decomp = {{
   name = "tbp-copper-sulfate-decomp",
   category = "chemistry",
   energy_required = 0.5,
-  icon = "__toms-byproducts__/graphics/icons/copper-sulfate-processing.png",
+  icon = "__toms-byproducts__/graphics/icons/copper-sulfate-decomp.png",
   icon_size = 64, icon_mipmaps = 4,
   enabled = false, -- sulfur processing
   ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="water", amount = 1}},
@@ -202,7 +208,7 @@ local copper_sulfate_to_lube = {{
   name = "tbp-copper-sulfate-to-lube",
   category = "chemistry",
   energy_required = 2,
-  icon = "__toms-byproducts__/graphics/icons/copper-sulfate.png",
+  icon = "__toms-byproducts__/graphics/icons/copper-sulfate-to-lube.png",
   icon_size = 64, icon_mipmaps = 4,
   enabled = false, -- lubricant
   ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="tbp-liquid-pyrolysis-oil", amount = 10}},
@@ -237,7 +243,7 @@ local ash_trace_extraction = {{
     subgroup = "intermediate-product",
     category = "chemistry",
     energy_required = 4,
-    icon = "__toms-byproducts__/graphics/icons/ash-sludge-processing.png",
+    icon = "__toms-byproducts__/graphics/icons/ash-trace-extraction.png",
     icon_size = 64, icon_mipmaps = 4,
     enabled = false, -- flamables
     ingredients = {{type="fluid", name="tbp-ash-sludge", amount = 60}},
@@ -281,6 +287,8 @@ local ash_asphalt = {{
     category = "crafting-with-fluid",
     ingredients = {{type = "fluid", name = "tbp-ash-sludge", amount = 150}},
     results = {{type="item", name="concrete", amount = "10"}},
+    icon = "__toms-byproducts__/graphics/icons/ash-asphalt.png",
+    icon_size = 64, icon_mipmaps = 4,
     allow_decomposition = false
 }}
 data:extend(ash_asphalt)
@@ -298,7 +306,7 @@ local solid_fuel_from_petroleum_sludge = {{
     {
       {type="item", name="solid-fuel", amount=1}
     },
-    icon = "__base__/graphics/icons/solid-fuel.png",
+    icon = "__toms-byproducts__/graphics/icons/solid-fuel-from-petroleum-sludge.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "fluid-recipes",
     enabled = false, -- advanced oil processing
@@ -334,6 +342,8 @@ local explosives_from_copper_sulfide_and_petroleum_sludge = {{
     },
     result = "explosives",
     result_count = 2,
+    icon = "__toms-byproducts__/graphics/icons/explosives_from_cs_and_ps.png",
+    icon_size = 64, icon_mipmaps = 4,
     allow_decomposition = false
 }}
 data:extend(explosives_from_copper_sulfide_and_petroleum_sludge)
