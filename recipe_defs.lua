@@ -29,7 +29,7 @@ local slag_trace_extraction = {{
   type = "recipe",
   name = "tbp-slag-trace-extraction",
   category = "tbp-byptoduct-refining",
-  enabled = true,
+  enabled = false, -- automation
   energy_required = 10,
   ingredients = {{"tbp-slag", 10}},
   icon = "__toms-byproducts__/graphics/icons/slag.png",
@@ -78,7 +78,7 @@ local spent_etchant_to_copper = {{
   type = "recipe",
   name = "tbp-etchant-metal-reclamation",
   category = "tbp-byptoduct-refining",
-  enabled = true,
+  enabled = false, -- electronics
   energy_required = 6,
   ingredients = {{"tbp-spent-etchant", 10}},
   result = "copper-plate",
@@ -91,7 +91,7 @@ local spent_etchant_to_copper_adv = {{
   type = "recipe",
   name = "tbp-etchant-advanced-metal-reclamation",
   category = "tbp-byptoduct-refining",
-  enabled = true,
+  enabled = false, -- advanced electronics
   energy_required = 3,
   ingredients = {{"tbp-spent-etchant", 5}},
   result = "copper-cable",
@@ -105,7 +105,7 @@ local plastic_to_pyro = {{
   name = "tbp-plastic-to-pyro",
   category = "chemistry",
   subgroup="fluid-recipes",
-  enabled = true,
+  enabled = false, -- plastics
   energy_required = 5.0,
   ingredients = {{type="item", name="plastic-bar", amount=5}},
   results = {{type="fluid",name="tbp-liquid-pyrolysis-oil", amount=30}},
@@ -126,7 +126,7 @@ local plastic_waste_to_pyro = {{
   name = "tbp-plastic-waste-to-pyro",
   category = "chemistry",
   subgroup="fluid-recipes",
-  enabled = true,
+  enabled = false, -- plastics
   energy_required = 5.0,
   ingredients = {{type="item", name="tbp-plastic-waste", amount=10}},
   results = {{type="fluid",name="tbp-liquid-pyrolysis-oil", amount=15}},
@@ -146,7 +146,7 @@ local plastic_waste_to_plastic = {{
   name = "tbp-plastic-waste-to-plastic",
   category = "smelting",
   energy_required = 4,
-  enabled = true,
+  enabled = false, -- plastics
   ingredients = {{type="item", name="tbp-plastic-waste", amount = 10}},
   results = {{type="item", name = "plastic-bar", amount = 1}},
   allow_decomposition = false
@@ -160,7 +160,7 @@ local pyro_oil_liquid_to_solid = {{
   name = "tbp-pyrolysis-oil-liquid-to-solid",
   category = "chemistry",
   energy_required = 2,
-  enabled = true,
+  enabled = false, -- plastics
   ingredients = {{type="fluid", name="tbp-liquid-pyrolysis-oil", amount=30}},
   results = {{type="item", name="tbp-solid-pyrolysis-oil", amount = 1}},
   crafting_machine_tint =
@@ -182,7 +182,7 @@ local copper_sulfate_decomp = {{
   energy_required = 0.5,
   icon = "__toms-byproducts__/graphics/icons/copper-sulfate.png",
   icon_size = 64, icon_mipmaps = 4,
-  enabled = true,
+  enabled = false, -- sulfur processing
   ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="water", amount = 1}},
   results = {{type="item", name = "copper-plate", amount = 1, probability = 0.1}, {type="item", name="sulfur", amount = 1, probability = 0.1}},
   subgroup = "intermediate-product",
@@ -198,7 +198,7 @@ local copper_sulfate_to_lube = {{
   energy_required = 2,
   icon = "__toms-byproducts__/graphics/icons/copper-sulfate.png",
   icon_size = 64, icon_mipmaps = 4,
-  enabled = true,
+  enabled = false, -- lubricant
   ingredients = {{type="item", name="tbp-copper-sulfate", amount = 1}, {type="fluid", name="tbp-liquid-pyrolysis-oil", amount = 10}},
   results = {{type="fluid", name = "lubricant", amount = 1}},
   subgroup = "fluid-recipes",
@@ -216,7 +216,7 @@ local coal_ashing = {{
     emissions_multiplier = 2.0,
     icon = "__toms-byproducts__/graphics/icons/ash-sludge.png",
     icon_size = 64, icon_mipmaps = 4,
-    enabled = true,
+    enabled = false, -- flamables
     ingredients = {{type="item", name="coal", amount = 5}, {type="fluid", name="water", amount = 30}},
     results = {{type="fluid", name="tbp-ash-sludge", amount = 30}},
     subroup = "intermediate-product"
@@ -233,7 +233,7 @@ local ash_trace_extraction = {{
     energy_required = 4,
     icon = "__toms-byproducts__/graphics/icons/ash-sludge.png",
     icon_size = 64, icon_mipmaps = 4,
-    enabled = true,
+    enabled = false, -- flamables
     ingredients = {{type="fluid", name="tbp-ash-sludge", amount = 60}},
     results = {
     {
@@ -271,7 +271,7 @@ local ash_asphalt = {{
     type = "recipe",
     name = "tbp-ash-asphalt",
     energy_required = 10,
-    enabled = true,
+    enabled = false, -- flamables
     category = "crafting-with-fluid",
     ingredients = {{type = "fluid", name = "tbp-ash-sludge", amount = 150}},
     results = {{type="item", name="concrete", amount = "10"}},
@@ -295,7 +295,7 @@ local solid_fuel_from_petroleum_sludge = {{
     icon = "__base__/graphics/icons/solid-fuel.png",
     icon_size = 64, icon_mipmaps = 4,
     subgroup = "fluid-recipes",
-    enabled = true,
+    enabled = false, -- advanced oil processing
     order = "b[fluid-chemistry]-d[solid-fuel-from-petroleum-sludge]",
     crafting_machine_tint =
     {
@@ -321,7 +321,7 @@ local explosives_from_copper_sulfide_and_petroleum_sludge = {{
       quaternary = {r = 0.210, g = 0.170, b = 0.013, a = 1.000}, -- #352b03ff
     },
     energy_required = 5,
-    enabled = true,
+    enabled = false, -- explosives
     ingredients = {
         {type = "item", name = "tbp-copper-sulfate", amount = 5},
         {type = "fluid", name = "tbp-petroleum-sludge", amount = 100}
@@ -345,7 +345,7 @@ local petroleum_sludge_to_petroleum_and_ash_sludge = {{
       quaternary = {r = 0.564, g = 0.364, b = 0.564, a = 1.000}, -- #8f5c8fff
     },
     energy_required = 3,
-    enabled = true,
+    enabled = false, -- advanced oil processing
     ingredients = {{type = "fluid", name = "tbp-petroleum-sludge", amount = 100}},
     results = {
         {type = "fluid", name = "petroleum-gas", amount = 30},
@@ -364,7 +364,7 @@ local plutonium_fuel = {
     type = "recipe",
     name = "tbp-plutonium-fuel",
     energy_required = 90,
-    enabled = true,
+    enabled = false, -- nuclear power
     category = "centrifuging",
     ingredients = {{"tbp-plutonium", 1}, {"rocket-fuel", 1}},
     icon = "__toms-byproducts__/graphics/icons/plutonium-fuel.png",
@@ -381,7 +381,7 @@ local plutonium_fuel_cell = {
     type = "recipe",
     name = "tbp-plutonium-fuel-cell",
     energy_required = 10,
-    enabled = true,
+    enabled = false, -- kovarex enrichment process
     ingredients =
     {
       {"iron-plate", 5},
@@ -400,7 +400,7 @@ local plutonium_fuel_reprocessing = {
     type = "recipe",
     name = "tbp-plutonium-fuel-reprocessing",
     energy_required = 60,
-    enabled = true,
+    enabled = false, -- nuclear fuel reprocessing
     category = "centrifuging",
     ingredients = {{"tbp-used-up-plutonium-fuel-cell", 5}},
     icon = "__toms-byproducts__/graphics/icons/plutonium-fuel-reprocessing.png",
