@@ -264,3 +264,19 @@ local plutonium_fuel = {
   }
 }
 data:extend(plutonium_fuel)
+
+
+
+local picky_inserter_item = {
+  {
+    type = "item",
+    name = "tbp-picky-inserter",
+    icon = "__toms-byproducts__/graphics/icons/picky-inserter.png",
+    icon_size = 64, icon_mipmaps = 4,
+    subgroup = "inserter",
+    order = "b[picky-inserter]",
+    place_result = "tbp-picky-inserter",
+    stack_size = 50
+  }
+}
+data:extend(picky_inserter_item)
