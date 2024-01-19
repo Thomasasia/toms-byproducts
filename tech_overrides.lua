@@ -16,20 +16,39 @@ end
 if settings.startup["tbp-enable-slag"].value then
     add_tech_recipe_unlock("automation", "tbp-slag-trace-extraction")
 end
-add_tech_recipe_unlock("electronics", "tbp-etchant-metal-reclamation")
-add_tech_recipe_unlock("advanced-electronics", "tbp-etchant-advanced-metal-reclamation")
-add_tech_recipe_unlock("plastics", "tbp-plastic-to-pyro")
-add_tech_recipe_unlock("plastics", "tbp-plastic-waste-to-pyro")
-add_tech_recipe_unlock("plastics", "tbp-plastic-waste-to-plastic")
-add_tech_recipe_unlock("plastics", "tbp-pyrolysis-oil-liquid-to-solid")
-add_tech_recipe_unlock("sulfur-processing", "tbp-copper-sulfate-decomp")
-add_tech_recipe_unlock("lubricant", "tbp-copper-sulfate-to-lube")
-add_tech_recipe_unlock("flammables", "tbp-coal-ashing")
-add_tech_recipe_unlock("flammables", "tbp-ash-trace-extraction")
-add_tech_recipe_unlock("flammables", "tbp-ash-asphalt")
-add_tech_recipe_unlock("advanced-oil-processing", "tbp-solid-fuel-from-petroleum-sludge")
-add_tech_recipe_unlock("advanced-oil-processing", "tbp-petroleum-sludge-to-petroleum-and-ash")
-add_tech_recipe_unlock("explosives", "tbp-explosives-from-cs-and-ps")
-add_tech_recipe_unlock("nuclear-power", "tbp-plutonium-fuel")
-add_tech_recipe_unlock("kovarex-enrichment-process", "tbp-plutonium-fuel-cell")
-add_tech_recipe_unlock("nuclear-fuel-reprocessing", "tbp-plutonium-fuel-reprocessing")
+if settings.startup["tbp-enable-spent-etchant"].value then
+    add_tech_recipe_unlock("electronics", "tbp-etchant-metal-reclamation")
+    add_tech_recipe_unlock("advanced-electronics", "tbp-etchant-advanced-metal-reclamation")
+end
+if settings.startup["tbp-enable-plastic-waste"].value then
+    add_tech_recipe_unlock("plastics", "tbp-plastic-to-pyro")
+    add_tech_recipe_unlock("plastics", "tbp-plastic-waste-to-pyro")
+    add_tech_recipe_unlock("plastics", "tbp-plastic-waste-to-plastic")
+    add_tech_recipe_unlock("plastics", "tbp-pyrolysis-oil-liquid-to-solid")
+end
+if settings.startup["tbp-enable-copper-sulfate"].value then
+    add_tech_recipe_unlock("sulfur-processing", "tbp-copper-sulfate-decomp")
+end
+if settings.startup["tbp-enable-ash-sludge"].value then
+    add_tech_recipe_unlock("flammables", "tbp-coal-ashing")
+    add_tech_recipe_unlock("flammables", "tbp-ash-trace-extraction")
+    add_tech_recipe_unlock("flammables", "tbp-ash-asphalt")
+end
+if settings.startup["tbp-enable-petroleum-sludge"].value then
+    add_tech_recipe_unlock("advanced-oil-processing", "tbp-solid-fuel-from-petroleum-sludge")
+end
+if settings.startup["tbp-enable-plutonium"].value then
+    add_tech_recipe_unlock("nuclear-power", "tbp-plutonium-fuel")
+    add_tech_recipe_unlock("kovarex-enrichment-process", "tbp-plutonium-fuel-cell")
+    add_tech_recipe_unlock("nuclear-fuel-reprocessing", "tbp-plutonium-fuel-reprocessing")
+end
+
+if settings.startup["tbp-enable-ash-sludge"].value and settings.startup["tbp-enable-petroleum-sludge"] then
+    add_tech_recipe_unlock("advanced-oil-processing", "tbp-petroleum-sludge-to-petroleum-and-ash")
+end
+if settings.startup["tbp-enable-copper-sulfate"].value and settings.startup["tbp-enable-plastic-waste"] then
+    add_tech_recipe_unlock("lubricant", "tbp-copper-sulfate-to-lube")
+end
+if settings.startup["tbp-enable-copper-sulfate"].value and settings.startup["tbp-enable-petroleum-sludge"] then
+    add_tech_recipe_unlock("explosives", "tbp-explosives-from-cs-and-ps")
+end

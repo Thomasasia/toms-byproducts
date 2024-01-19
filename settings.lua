@@ -54,11 +54,5 @@ data:extend({
         name = "tbp-early-game-splitter-filter",
         setting_type = "startup",
         default_value = true
-    },
-    {
-        type = "bool-setting",
-        name = "tbp-early-game-furnace-inventory-size",
-        setting_type = "startup",
-        default_value = true
-    },
+    }
 })
