@@ -61,8 +61,8 @@ local function reset_all_tbp_recipes(event)
     disable_recipe("tbp-petroleum-sludge-to-petroleum-and-ash")
     disable_recipe("tbp-copper-sulfate-to-lube")
     disable_recipe("tbp-explosives-from-cs-and-ps")
-    set_setting_enabled_recipe(event)
     reload_recipes(event)
+    set_setting_enabled_recipe(event)
 end
 
 
