@@ -4,6 +4,6 @@
   "title": "Tom's Byproducts",
   "author": "Tomarse",
   "factorio_version": "1.1",
-  "dependencies": ["base >= 1.1"],
+  "dependencies": ["base >= 1.1", "? Side Inserters", "? Flare Stack"],
   "description": "This mod adds byproducts to common recipies, and ways to process those byproducts."
 }
