@@ -22,6 +22,14 @@ local function disable_recipe(recipe_name)
     end
 end
 
+-- sets the default enabled recipes to their respective setting
+-- right now there is only one
+local function set_setting_enabled_recipe()
+    for i, force in pairs(game.forces) do
+        force.recipes["tbp-picky-inserter"].enabled = settings.startup["tbp-early-game-filter-inserter"].value
+    end
+end
+
 -- disables all recipes, then re enables them based on research
 -- this allows settings to change the recipes allowed to the player after they have been researched
 local function reset_all_tbp_recipes(event)
@@ -43,6 +51,7 @@ local function reset_all_tbp_recipes(event)
     disable_recipe("tbp-petroleum-sludge-to-petroleum-and-ash")
     disable_recipe("tbp-copper-sulfate-to-lube")
     disable_recipe("tbp-explosives-from-cs-and-ps")
+    set_setting_enabled_recipe()
     reload_recipes(event)
 end
 

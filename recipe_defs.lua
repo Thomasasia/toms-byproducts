@@ -429,3 +429,19 @@ local plutonium_fuel_reprocessing = {
   }
 }
 data:extend(plutonium_fuel_reprocessing)
+
+local picky_inserter_recipe = {
+  {
+  type = "recipe",
+  name = "tbp-picky-inserter",
+  ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"iron-gear-wheel", 1},
+      {"iron-plate", 1}
+    },
+  result = "tbp-picky-inserter",
+  enabled = true
+  }
+}
+data:extend(picky_inserter_recipe)
