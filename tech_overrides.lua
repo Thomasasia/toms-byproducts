@@ -13,8 +13,9 @@ end
 
 
 
-
-add_tech_recipe_unlock("automation", "tbp-slag-trace-extraction")
+if settings.startup["tbp-enable-slag"].value then
+    add_tech_recipe_unlock("automation", "tbp-slag-trace-extraction")
+end
 add_tech_recipe_unlock("electronics", "tbp-etchant-metal-reclamation")
 add_tech_recipe_unlock("advanced-electronics", "tbp-etchant-advanced-metal-reclamation")
 add_tech_recipe_unlock("plastics", "tbp-plastic-to-pyro")
