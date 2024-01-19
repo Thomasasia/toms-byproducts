@@ -325,7 +325,7 @@ data:extend(solid_fuel_from_petroleum_sludge)
 -- make explosives using byproducts
 local explosives_from_copper_sulfide_and_petroleum_sludge = {{
     type = "recipe",
-    name = "tbp-explosives_from_cs_and_ps",
+    name = "tbp-explosives-from-cs-and-ps",
     category = "chemistry",
     crafting_machine_tint =
     {
@@ -342,7 +342,7 @@ local explosives_from_copper_sulfide_and_petroleum_sludge = {{
     },
     result = "explosives",
     result_count = 2,
-    icon = "__toms-byproducts__/graphics/icons/explosives_from_cs_and_ps.png",
+    icon = "__toms-byproducts__/graphics/icons/explosives-from-cs-and-ps.png",
     icon_size = 64, icon_mipmaps = 4,
     allow_decomposition = false
 }}
@@ -368,7 +368,7 @@ local petroleum_sludge_to_petroleum_and_ash_sludge = {{
         {type = "fluid", name = "tbp-ash-sludge", amount = 30}
     },
     subgroup = "fluid-recipes",
-    icon = "__toms-byproducts__/graphics/icons/petroleum-sludge.png",
+    icon = "__toms-byproducts__/graphics/icons/petroleum-sludge-to-petroleum-and-ash.png",
     icon_size = 64, icon_mipmaps = 4,
     allow_decomposition = false
 }}
