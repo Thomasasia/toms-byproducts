@@ -32,7 +32,7 @@ local slag_trace_extraction = {{
   name = "tbp-slag-trace-extraction",
   category = "tbp-byptoduct-refining",
   enabled = false, -- automation
-  energy_required = 10,
+  energy_required = 4,
   ingredients = {{"tbp-slag", 10}},
   icon = "__toms-byproducts__/graphics/icons/slag-trace-extraction.png",
   icon_size = 64, icon_mipmaps = 4,
