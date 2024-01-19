@@ -24,9 +24,19 @@ end
 
 -- sets the default enabled recipes to their respective setting
 -- right now there is only one
-local function set_setting_enabled_recipe()
+local function set_setting_enabled_recipe(event)
     for i, force in pairs(game.forces) do
         force.recipes["tbp-picky-inserter"].enabled = settings.startup["tbp-early-game-filter-inserter"].value
+
+        -- selectively enable relevant barrels
+        if force.technologies["oil-processing"].researched then
+            force.recipes["fill-tbp-liquid-pyrolysis-oil-barrel"].enabled = settings.startup["tbp-enable-plastic-waste"]
+            force.recipes["empty-tbp-liquid-pyrolysis-oil-barrel"].enabled = settings.startup["tbp-enable-plastic-waste"]
+            force.recipes["fill-tbp-ash-sludge-barrel"].enabled = settings.startup["tbp-enable-ash-sludge"].valuetrue
+            force.recipes["empty-tbp-ash-sludge-barrel"].enabled = settings.startup["tbp-enable-ash-sludge"].valuetrue
+            force.recipes["fill-tbp-petroleum-sludge-barrel"].enabled = settings.startup["tbp-enable-petroleum-sludge"].value
+            force.recipes["empty-tbp-petroleum-sludge-barrel"].enabled = settings.startup["tbp-enable-petroleum-sludge"].value
+        end
     end
 end
 
@@ -51,7 +61,7 @@ local function reset_all_tbp_recipes(event)
     disable_recipe("tbp-petroleum-sludge-to-petroleum-and-ash")
     disable_recipe("tbp-copper-sulfate-to-lube")
     disable_recipe("tbp-explosives-from-cs-and-ps")
-    set_setting_enabled_recipe()
+    set_setting_enabled_recipe(event)
     reload_recipes(event)
 end
 
@@ -59,6 +69,7 @@ end
 
 script.on_init(reload_recipes)
 script.on_configuration_changed(reset_all_tbp_recipes)
+script.on_research_finished(set_setting_enabled_recipe) -- we call this here to prevent disabled fluids appearing in the recipe menu for barreling
 
 commands.add_command(
   "recipes-reload",
