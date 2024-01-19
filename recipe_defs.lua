@@ -430,6 +430,7 @@ local plutonium_fuel_reprocessing = {
 }
 data:extend(plutonium_fuel_reprocessing)
 
+-- early game inserter
 local picky_inserter_recipe = {
   {
   type = "recipe",
