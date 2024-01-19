@@ -48,11 +48,5 @@ data:extend({
         name = "tbp-early-game-filter-inserter",
         setting_type = "startup",
         default_value = true
-    },
-    {
-        type = "bool-setting",
-        name = "tbp-early-game-splitter-filter",
-        setting_type = "startup",
-        default_value = true
     }
 })
