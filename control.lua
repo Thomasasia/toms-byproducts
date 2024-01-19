@@ -30,10 +30,10 @@ local function set_setting_enabled_recipe(event)
 
         -- selectively enable relevant barrels
         if force.technologies["oil-processing"].researched then
-            force.recipes["fill-tbp-liquid-pyrolysis-oil-barrel"].enabled = settings.startup["tbp-enable-plastic-waste"]
-            force.recipes["empty-tbp-liquid-pyrolysis-oil-barrel"].enabled = settings.startup["tbp-enable-plastic-waste"]
-            force.recipes["fill-tbp-ash-sludge-barrel"].enabled = settings.startup["tbp-enable-ash-sludge"].valuetrue
-            force.recipes["empty-tbp-ash-sludge-barrel"].enabled = settings.startup["tbp-enable-ash-sludge"].valuetrue
+            force.recipes["fill-tbp-liquid-pyrolysis-oil-barrel"].enabled = settings.startup["tbp-enable-plastic-waste"].value
+            force.recipes["empty-tbp-liquid-pyrolysis-oil-barrel"].enabled = settings.startup["tbp-enable-plastic-waste"].value
+            force.recipes["fill-tbp-ash-sludge-barrel"].enabled = settings.startup["tbp-enable-ash-sludge"].value
+            force.recipes["empty-tbp-ash-sludge-barrel"].enabled = settings.startup["tbp-enable-ash-sludge"].value
             force.recipes["fill-tbp-petroleum-sludge-barrel"].enabled = settings.startup["tbp-enable-petroleum-sludge"].value
             force.recipes["empty-tbp-petroleum-sludge-barrel"].enabled = settings.startup["tbp-enable-petroleum-sludge"].value
         end
@@ -69,10 +69,10 @@ end
 
 script.on_init(reload_recipes)
 script.on_configuration_changed(reset_all_tbp_recipes)
-script.on_research_finished(set_setting_enabled_recipe) -- we call this here to prevent disabled fluids appearing in the recipe menu for barreling
+script.on_event(defines.events.on_research_finished, set_setting_enabled_recipe) -- we call this here to prevent disabled fluids appearing in the recipe menu for barreling
 
 commands.add_command(
   "recipes-reload",
   "Reload all recipes from researched technologies",
-  reload_recipes
+  reset_all_tbp_recipes
 )

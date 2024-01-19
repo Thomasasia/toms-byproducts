@@ -43,12 +43,14 @@ if settings.startup["tbp-enable-plutonium"].value then
     add_tech_recipe_unlock("nuclear-fuel-reprocessing", "tbp-plutonium-fuel-reprocessing")
 end
 
-if settings.startup["tbp-enable-ash-sludge"].value and settings.startup["tbp-enable-petroleum-sludge"] then
+if (settings.startup["tbp-enable-ash-sludge"].value and settings.startup["tbp-enable-petroleum-sludge"].value) then
     add_tech_recipe_unlock("advanced-oil-processing", "tbp-petroleum-sludge-to-petroleum-and-ash")
 end
-if settings.startup["tbp-enable-copper-sulfate"].value and settings.startup["tbp-enable-plastic-waste"] then
+
+if settings.startup["tbp-enable-plastic-waste"].value and settings.startup["tbp-enable-copper-sulfate"].value then
     add_tech_recipe_unlock("lubricant", "tbp-copper-sulfate-to-lube")
 end
-if settings.startup["tbp-enable-copper-sulfate"].value and settings.startup["tbp-enable-petroleum-sludge"] then
+
+if settings.startup["tbp-enable-copper-sulfate"].value and settings.startup["tbp-enable-petroleum-sludge"].value then
     add_tech_recipe_unlock("explosives", "tbp-explosives-from-cs-and-ps")
 end
