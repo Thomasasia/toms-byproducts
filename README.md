@@ -7,12 +7,18 @@ Each byproduct is toggleable in the mod settings menu to customize your experien
 
 This mod has been designed to be extremely compatible with other mods. Recipes are never overwritten, and the byproducts are added intelligently to the outputs.
 
-Includes:
-    - Slag: byproduct of smelting, can be turned into bricks or searched for trace minerals
-    - Plastic Waste: byproduct of certain plastic recipes, can be smelted down into plastic or undergo pyrolysis to create pyrolysis oil, a potent fluid for flame turrets that can also be turned into fuel
-    - Spent Etchant: a byproduct of electronics production, which can be used to reclaim copper from these recipes
-    - Copper Sulfate: byproduct of advanced electronics recipes, can be decomposed into copper and sulfur, turned into explosives, or turned into lubricant
-    - Plutonium: a byproduct of nuclear fuel recycling, can be used to make long-lasting fuel.
+#Includes:
+
+- Slag: byproduct of smelting, can be turned into bricks or searched for trace minerals
+
+- Plastic Waste: byproduct of certain plastic recipes, can be smelted down into plastic or undergo pyrolysis to create pyrolysis oil, a potent fluid for flame turrets that can also be turned into fuel
+
+- Spent Etchant: a byproduct of electronics production, which can be used to reclaim copper from these recipes
+
+- Copper Sulfate: byproduct of advanced electronics recipes, can be decomposed into copper and sulfur, turned into explosives, or turned into lubricant
+
+- Plutonium: a byproduct of nuclear fuel recycling, can be used to make long-lasting fuel.
+
 
 This mod also adds an early game filter inserter to help deal with slag before splitters are unlocked. This can also be toggled in the mod settings.
 
